@@ -7,76 +7,80 @@ import javax.persistence.*;
 @Entity
 @Table(name = "users")
 public class User {
+    public User() {
+    }
 
-   @Id
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
-   private Long id;
+    public User(String name, String lastName, String email) {
+        this.name = name;
+        this.lastName = lastName;
+        this.email = email;
+    }
 
-   @Column(name = "name")
-   private String name;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-   @Column(name = "lastname")
-   private String lastName;
+    @Column(name = "name")
+    private String name;
 
-   @Column(name = "email")
-   private String email;
+    @Column(name = "lastname")
+    private String lastName;
 
-   @OneToOne(mappedBy = "user")
-   @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-   private Car car;
+    @Column(name = "email")
+    private String email;
 
-   public Car getCar() {
-      return car;
-   }
+    @OneToOne(mappedBy = "user")
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    private Car car;
 
-   public void setCar(Car car) {
-      this.car = car;
-   }
+    public Car getCar() {
+        return car;
+    }
 
-   public User() {}
-   
-   public User(String name, String lastName, String email) {
-      this.name = name;
-      this.lastName = lastName;
-      this.email = email;
-   }
+    public void setCar(Car car) {
+        this.car = car;
+    }
 
-   public Long getId() {
-      return id;
-   }
+    public Long getId() {
+        return id;
+    }
 
-   public void setId(Long id) {
-      this.id = id;
-   }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-   public String getName() {
-      return name;
-   }
+    public String getName() {
+        return name;
+    }
 
-   public void setFirstName(String name) {
-      this.name = name;
-   }
+    public void setFirstName(String name) {
+        this.name = name;
+    }
 
-   public String getLastName() {
-      return lastName;
-   }
-   public void setLastName(String lastName) {
-      this.lastName = lastName;
-   }
-   public String getEmail() {
-      return email;
-   }
+    public String getLastName() {
+        return lastName;
+    }
 
-   @Override
-   public String toString() {
-      return "User{" +
-              "name='" + name + '\'' +
-              ", lastName='" + lastName + '\'' +
-              ", email='" + email + '\'' +
-              '}';
-   }
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-   public void setEmail(String email) {
-      this.email = email;
-   }
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
+
+
 }
